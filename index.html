@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabeen Manekia - New Collection</title>
+    <style>
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            /* Remove all page breaks */
+            .product, .header, .footer, .content {
+                page-break-inside: avoid;
+                page-break-before: auto;
+                page-break-after: auto;
+            }
+            
+            /* Force continuous flow */
+            @page {
+                size: auto;
+                margin: 0mm;
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: white;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            font-weight: 300;
+            color: white;
+        }
+        
+        .header .tagline {
+            font-size: 1.3em;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.3s;
+            font-size: 1em;
+        }
+        
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .social-links svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+        
+        .shipping-banner {
+            background: #e74c3c;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        
+        .shipping-banner span {
+            display: block;
+            font-size: 0.7em;
+            margin-top: 10px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            color: white;
+        }
+        
+        .content {
+            padding: 50px 30px;
+        }
+        
+        .product {
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 50px;
+        }
+        
+        .product:last-child {
+            border-bottom: none;
+        }
+        
+        .product:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .product:nth-child(even) .product-image {
+            order: 2;
+        }
+        
+        .product:nth-child(even) .product-info {
+            order: 1;
+        }
+        
+        .product-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background: #f8f9fa;
+        }
+        
+        .product-image a {
+            display: block;
+            text-decoration: none;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .shop-now-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1em;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .shop-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+        }
+        
+        .product-info {
+            padding: 10px;
+        }
+        
+        .product h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .product-code {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .product p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+        
+        .product-details {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1em;
+            color: #555;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #34495e;
+        }
+        
+        .price {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.25em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .footer h3 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 300;
+        }
+        
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.15em;
+            display: block;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #5dade2;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 25px;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .product {
+                grid-template-columns: 1fr;
+            }
+            
+            .product:nth-child(even) .product-image {
+                order: 1;
+            }
+            
+            .product:nth-child(even) .product-info {
+                order: 2;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .shipping-banner {
+                font-size: 1.2em;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SABEEN MANEKIA</h1>
+            <p class="tagline">Elegance Crafted for Every Occasion</p>
+            <div class="social-links">
+                <a href="https://sabeenmanekia.com" target="_blank">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/>
+                    </svg>
+                    Website
+                </a>
+                <a href="https://www.instagram.com/sabeenmanekiaofficial/" target="_blank">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                    </svg>
+                    Instagram
+                </a>
+                <a href="https://www.facebook.com/sabeen.manekia1/" target="_blank">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Facebook
+                </a>
+                <a href="https://wa.me/15122263078" target="_blank">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+        
+        <div class="shipping-banner">
+            ✨ FREE SHIPPING ✨
+            <span>USA • Canada • UK • UAE • Pakistan</span>
+        </div>
+        
+        <div class="content">
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/nayab-3pc" target="_blank">
+                        <img src="Nayab.jpeg" alt="Nayab 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Nayab</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>Pleated shaded blue and green outfit on soft sheesha silk, beautifully enhanced with kaamdaani details on the neckline, sleeves, and daaman. The shaded silk dupatta features delicate kaamdaani work all over with tassels for a graceful finish.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">48"</span>
+                        </div>
+                    </div>
+                    <div class="price">$165 | Rs. 46,500 | AED 600</div>
+                    <a href="https://sabeenmanekia.com/products/nayab-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/haya-3pc" target="_blank">
+                        <img src="Haya.jpeg" alt="Haya 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Haya</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>Beige silk shirt adorned with colorful embroidery, highlighted by scalloped cuts on the daaman and sleeves for a graceful look. Paired with embroidered culottes and a soft tie-dye dupatta that adds a vibrant touch to the ensemble.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">47"</span>
+                        </div>
+                    </div>
+                    <div class="price">$125 | Rs. 35,000 | AED 455</div>
+                    <a href="https://sabeenmanekia.com/products/haya-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/lemon-mist-3pc" target="_blank">
+                        <img src="Lemon Mist.jpeg" alt="Lemon Mist 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Lemon Mist</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>This elegant long shirt features a soft ombré of off-white and lemon yellow, beautifully hand embellished with Swarovski stones on the shirt, sleeves, daman, and dupatta. It comes with a matching pant and a silk dupatta, finished with appliqué motifs and Swarovski work in the corner.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">50"</span>
+                        </div>
+                    </div>
+                    <div class="price">$195 | Rs. 55,000 | AED 725</div>
+                    <a href="https://sabeenmanekia.com/products/lemon-mist-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/midnight-plum-3pc" target="_blank">
+                        <img src="Midnight Plum.jpeg" alt="Midnight Plum 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Midnight Plum</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>Crafted from premium sheesha rawsilk, this elegant ensemble features a shaded plum purple and deep blue short-style kurta, paired with a timeless skinny shalwar. The outfit is adorned with exquisite hand worked Swarovski stones on the neckline, sleeves, daman, shalwar, and dupatta.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">35"</span>
+                        </div>
+                    </div>
+                    <div class="price">$165 | Rs. 45,000 | AED 600</div>
+                    <a href="https://sabeenmanekia.com/products/midnight-plum-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/lemon-yellow-3pc" target="_blank">
+                        <img src="Lemon Yellow.jpeg" alt="Lemon Yellow 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Lemon Yellow</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>A stunning lemon yellow ensemble crafted from sheesha silk, featuring intricate cutwork embroidery on the sleeves, hem and slits. It is paired with a beautiful silk dupatta, elegantly finished with intricate cutwork embroidery on all four sides.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">48"</span>
+                        </div>
+                    </div>
+                    <div class="price">$125 | Rs. 35,000 | AED 450</div>
+                    <a href="https://sabeenmanekia.com/products/lemon-yellow-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/emerald-green-3pc" target="_blank">
+                        <img src="Emerald Green.jpeg" alt="Emerald Green 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Emerald Green</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>A stunning emerald green ensemble crafted from Korean silk, featuring intricate cutwork embroidery on the sleeves, hem and slits. Paired with a beautiful silk dupatta and matching silk trousers for seamless sophistication.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">48"</span>
+                        </div>
+                    </div>
+                    <div class="price">$125 | Rs. 35,000 | AED 450</div>
+                    <a href="https://sabeenmanekia.com/products/emerald-green-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/celeste-3pc" target="_blank">
+                        <img src="Celeste.jpeg" alt="Celeste 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Celeste</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>A beautiful two-tone blue silk ensemble features intricate patchwork cutwork on the hem. Paired with silk farshi shalwar and a shaded silk dupatta, adorned with cutwork detailing.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">35"</span>
+                        </div>
+                    </div>
+                    <div class="price">$125 | Rs. 35,000 | AED 450</div>
+                    <a href="https://sabeenmanekia.com/products/celeste-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/alara-3pc" target="_blank">
+                        <img src="Alara.jpeg" alt="Alara 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Alara</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>This exquisite emerald green ensemble, crafted from pure tussle silk, is adorned with intricate Aari embroidery on shirt, sleeves and culottes. Paired with a hand brush painted dupatta.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">50"</span>
+                        </div>
+                    </div>
+                    <div class="price">$165 | Rs. 46,500 | AED 600</div>
+                    <a href="https://sabeenmanekia.com/products/alara-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/amara-3pc" target="_blank">
+                        <img src="Amara.jpeg" alt="Amara 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Amara</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>This exquisite lilac ensemble, crafted from pure tussle silk, is adorned with intricate Aari embroidery on shirt, sleeves and culottes. Paired with an embroidered lilac dupatta with aari work and delicate lace on all four sides.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">50"</span>
+                        </div>
+                    </div>
+                    <div class="price">$150 | Rs. 42,300 | AED 550</div>
+                    <a href="https://sabeenmanekia.com/products/amara-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/dusty-beige-ensemble-3pc" target="_blank">
+                        <img src="Dusty beige ensemble.png" alt="Dusty Beige Ensemble 3PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Dusty Beige Ensemble</h2>
+                    <span class="product-code">3PC Set</span>
+                    <p>A luxurious dusty beige tussle silk kurta featuring embroidered paisalies handworked with pearls and sequins. Paired with a silk dupatta adorned with embroidered edges and motifs on the four corners, perfect for any festive or formal occasion.</p>
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Length:</span>
+                            <span class="detail-value">46"</span>
+                        </div>
+                    </div>
+                    <div class="price">$165 | Rs. 44,500 | AED 600</div>
+                    <a href="https://sabeenmanekia.com/products/dusty-beige-ensemble-3pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <a href="https://sabeenmanekia.com/products/mocha-glow-2pc" target="_blank">
+                        <img src="Mocha Glow.jpeg" alt="Mocha Glow 2PC">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2>Mocha Glow</h2>
+                    <span class="product-code">2PC Set</span>
+                    <p>A chic co-ord set in rich brown crepe georgette, designed with contemporary cutwork details on the sleeves, daman, and culottes. This versatile silhouette blends modern elegance with timeless sophistication, making it a refined choice for day-to-night wear.</p>
+                    <div class="price">$75 | Rs. 21,000 | AED 250</div>
+                    <a href="https://sabeenmanekia.com/products/mocha-glow-2pc" target="_blank" class="shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>Shop Now</h3>
+            <a href="https://sabeenmanekia.com" target="_blank">www.sabeenmanekia.com</a>
+            <a href="https://www.instagram.com/sabeenmanekiaofficial/" target="_blank">@sabeenmanekiaofficial</a>
+            <a href="https://sabeenmanekia.com" class="cta-button">BROWSE COLLECTION</a>
+        </div>
+    </div>
+</body>
+</html>
